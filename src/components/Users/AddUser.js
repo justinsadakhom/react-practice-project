@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../UI/Button";
 import { Card } from "../UI/Card";
 
 const StyledCard = styled(Card)`
@@ -33,6 +34,8 @@ export const AddUser = () => {
     event.preventDefault();
   };
 
+  const submitUserHandler = () => {};
+
   return (
     <StyledCard>
       <form onSubmit={addUserHandler}>
@@ -44,7 +47,9 @@ export const AddUser = () => {
           <label htmlFor="age">Age (Years)</label>
           <input id="age" type="number" />
         </div>
-        <button type="submit">Add User</button>
+        <Button type="submit" onClick={submitUserHandler}>
+          Add User
+        </Button>
       </form>
     </StyledCard>
   );
