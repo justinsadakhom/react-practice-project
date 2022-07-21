@@ -2,7 +2,7 @@ import { AddUser } from "./components/Users/AddUser";
 
 export const App = () => {
   return (
-    <div className="App">
+    <div>
       <AddUser />
     </div>
   );
