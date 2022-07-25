@@ -34,17 +34,30 @@ const StyledCard = styled(Card)`
 export const AddUser = ({ onAddUser }) => {
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
+  const [error, setError] = useState();
 
   const addUserHandler = (event) => {
     event.preventDefault();
-    const isValid =
-      username.trim().length !== 0 || (age.trim().length !== 0 && +age > 0);
 
-    if (isValid) {
-      onAddUser(username, age);
-      setUsername("");
-      setAge("");
+    if (username.trim().length === 0 || age.trim().length === 0) {
+      setError({
+        title: "Invalid input",
+        message: "Please enter a valid name and age (non-empty values).",
+      });
+      return;
     }
+
+    if (+age <= 0) {
+      setError({
+        title: "Invalid input",
+        message: "Please enter a valid age (> 0).",
+      });
+      return;
+    }
+
+    onAddUser(username, age);
+    setUsername("");
+    setAge("");
   };
 
   const usernameChangeHandler = (event) => {
@@ -55,9 +68,19 @@ export const AddUser = ({ onAddUser }) => {
     setAge(event.target.value);
   };
 
+  const closeErrorModalHandler = () => {
+    setError();
+  };
+
   return (
     <div>
-      <ErrorModal title="An error occurred!" message="Something went wrong!" />
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onErrorClose={closeErrorModalHandler}
+        />
+      )}
       <StyledCard>
         <form onSubmit={addUserHandler}>
           <div>

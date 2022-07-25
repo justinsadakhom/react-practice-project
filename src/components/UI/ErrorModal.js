@@ -50,7 +50,7 @@ const StyledErrorModal = styled.div`
   }
 `;
 
-export const ErrorModal = ({ title, message }) => {
+export const ErrorModal = ({ title, message, onErrorClose }) => {
   return (
     <StyledErrorModal>
       <div className="backdrop" />
@@ -62,7 +62,7 @@ export const ErrorModal = ({ title, message }) => {
           <p>{message}</p>
         </div>
         <footer className="actions">
-          <Button>Okay</Button>
+          <Button onClick={onErrorClose}>Okay</Button>
         </footer>
       </Card>
     </StyledErrorModal>

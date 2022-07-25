@@ -15,7 +15,7 @@ export const App = () => {
   return (
     <div>
       <AddUser onAddUser={onAddUser} />
-      <UsersList users={users} />
+      {users.length > 0 && <UsersList users={users} />}
     </div>
   );
 };
