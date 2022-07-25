@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "../UI/Button";
 import { Card } from "../UI/Card";
 import { ErrorModal } from "../UI/ErrorModal";
+import { Wrapper } from "../Helpers/Wrapper";
 
 const StyledCard = styled(Card)`
   margin: 2rem auto;
@@ -73,7 +74,7 @@ export const AddUser = ({ onAddUser }) => {
   };
 
   return (
-    <div>
+    <Wrapper>
       {error && (
         <ErrorModal
           title={error.title}
@@ -104,6 +105,6 @@ export const AddUser = ({ onAddUser }) => {
           <Button type="submit">Add User</Button>
         </form>
       </StyledCard>
-    </div>
+    </Wrapper>
   );
 };
