@@ -30,7 +30,7 @@ const StyledCard = styled(Card)`
   }
 `;
 
-export const AddUser = () => {
+export const AddUser = ({ onAddUser }) => {
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
 
@@ -40,6 +40,7 @@ export const AddUser = () => {
       username.trim().length !== 0 || (age.trim().length !== 0 && +age > 0);
 
     if (isValid) {
+      onAddUser(username, age);
       setUsername("");
       setAge("");
     }
