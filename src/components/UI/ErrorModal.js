@@ -53,7 +53,7 @@ const StyledErrorModal = styled.div`
 export const ErrorModal = ({ title, message, onErrorClose }) => {
   return (
     <StyledErrorModal>
-      <div className="backdrop" />
+      <div className="backdrop" onClick={onErrorClose} />
       <Card className="modal">
         <header className="header">
           <h2>{title}</h2>
