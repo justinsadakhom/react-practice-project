@@ -53,8 +53,6 @@ export const AddUser = () => {
     setAge(event.target.value);
   };
 
-  const submitUserHandler = () => {};
-
   return (
     <StyledCard>
       <form onSubmit={addUserHandler}>
@@ -76,9 +74,7 @@ export const AddUser = () => {
             value={age}
           />
         </div>
-        <Button type="submit" onClick={submitUserHandler}>
-          Add User
-        </Button>
+        <Button type="submit">Add User</Button>
       </form>
     </StyledCard>
   );
