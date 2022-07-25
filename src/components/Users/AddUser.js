@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { Button } from "../UI/Button";
 import { Card } from "../UI/Card";
+import { ErrorModal } from "../UI/ErrorModal";
 
 const StyledCard = styled(Card)`
   margin: 2rem auto;
@@ -55,28 +56,31 @@ export const AddUser = ({ onAddUser }) => {
   };
 
   return (
-    <StyledCard>
-      <form onSubmit={addUserHandler}>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input
-            id="username"
-            type="text"
-            onChange={usernameChangeHandler}
-            value={username}
-          />
-        </div>
-        <div>
-          <label htmlFor="age">Age (Years)</label>
-          <input
-            id="age"
-            type="number"
-            onChange={ageChangeHandler}
-            value={age}
-          />
-        </div>
-        <Button type="submit">Add User</Button>
-      </form>
-    </StyledCard>
+    <>
+      <ErrorModal title="An error occurred!" message="Something went wrong!" />
+      <StyledCard>
+        <form onSubmit={addUserHandler}>
+          <div>
+            <label htmlFor="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              onChange={usernameChangeHandler}
+              value={username}
+            />
+          </div>
+          <div>
+            <label htmlFor="age">Age (Years)</label>
+            <input
+              id="age"
+              type="number"
+              onChange={ageChangeHandler}
+              value={age}
+            />
+          </div>
+          <Button type="submit">Add User</Button>
+        </form>
+      </StyledCard>
+    </>
   );
 };
