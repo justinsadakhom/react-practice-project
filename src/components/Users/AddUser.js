@@ -56,7 +56,7 @@ export const AddUser = ({ onAddUser }) => {
   };
 
   return (
-    <>
+    <div>
       <ErrorModal title="An error occurred!" message="Something went wrong!" />
       <StyledCard>
         <form onSubmit={addUserHandler}>
@@ -81,6 +81,6 @@ export const AddUser = ({ onAddUser }) => {
           <Button type="submit">Add User</Button>
         </form>
       </StyledCard>
-    </>
+    </div>
   );
 };
