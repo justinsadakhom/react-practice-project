@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState } from "react";
 import { Button } from "../UI/Button";
 import { Card } from "../UI/Card";
 
@@ -30,8 +31,26 @@ const StyledCard = styled(Card)`
 `;
 
 export const AddUser = () => {
+  const [username, setUsername] = useState("");
+  const [age, setAge] = useState("");
+
   const addUserHandler = (event) => {
     event.preventDefault();
+    const isValid =
+      username.trim().length !== 0 || (age.trim().length !== 0 && +age > 0);
+
+    if (isValid) {
+      setUsername("");
+      setAge("");
+    }
+  };
+
+  const usernameChangeHandler = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const ageChangeHandler = (event) => {
+    setAge(event.target.value);
   };
 
   const submitUserHandler = () => {};
@@ -41,11 +60,21 @@ export const AddUser = () => {
       <form onSubmit={addUserHandler}>
         <div>
           <label htmlFor="username">Username</label>
-          <input id="username" type="text" />
+          <input
+            id="username"
+            type="text"
+            onChange={usernameChangeHandler}
+            value={username}
+          />
         </div>
         <div>
           <label htmlFor="age">Age (Years)</label>
-          <input id="age" type="number" />
+          <input
+            id="age"
+            type="number"
+            onChange={ageChangeHandler}
+            value={age}
+          />
         </div>
         <Button type="submit" onClick={submitUserHandler}>
           Add User
